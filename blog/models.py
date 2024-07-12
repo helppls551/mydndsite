@@ -30,6 +30,8 @@ class MyHero(models.Model):
     stealth = models.BooleanField()
     conviction = models.BooleanField()
     caring = models.BooleanField()
+    max_health = models.IntegerField()
+    items = models.TextField(default='Ваше Снаряжение')
 
 
 
