@@ -1,0 +1,39 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+    <h1>New Post</h1>
+    <form method="POST" enctype="multipart/form-data" class="post-form">{% csrf_token %}
+        <p>
+            <label for="id_photo">Photo:</label>
+            <input type="file" name="photo" accept="image/*" required="" aria-invalid="true" id="id_photo">
+        </p>
+        <p>
+            <label for="id_name">Name:</label>
+            <input type="text" name="name" maxlength="25" required="" aria-invalid="true" id="id_name">
+        </p>
+        <p>
+            <label for="id_strength">Strength:</label>
+            <input type="number" name="strength" required="" aria-invalid="true" id="id_strength">
+        </p>
+        <p>
+            <label for="id_endurance">Endurance:</label>
+            <input type="number" name="endurance" required="" aria-invalid="true" id="id_endurance">
+        </p>
+        <p>
+            <label for="id_intellegence">Intellegence:</label>
+            <input type="number" name="intellegence" required="" aria-invalid="true" id="id_intellegence">
+        </p>
+        <p>
+            <label for="id_charizma">Charizma:</label>
+            <input type="number" name="charizma" required="" aria-invalid="true" id="id_charizma">
+        </p>
+        <p>
+            <label for="id_dexterity">Dexterity:</label>
+            <input type="number" name="dexterity" required="" aria-invalid="true" id="id_dexterity">
+        </p>
+        <p>
+            <label for="id_wisdom">Wisdom:</label>
+            <input type="number" name="wisdom" required="" aria-invalid="true" id="id_wisdom">
+        </p>
+        <button type="submit">Добавить</button>
+    </form>
+{% endblock %}
