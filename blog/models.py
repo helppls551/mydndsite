@@ -1,7 +1,7 @@
 from django.conf import settings
 from django.db import models
 from django.utils import timezone
-
+from . import func
 
 class MyHero(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
@@ -19,6 +19,7 @@ class MyHero(models.Model):
     perception = models.BooleanField()
     survival = models.BooleanField()
     performance = models.BooleanField()
+    intimidation = models.BooleanField()
     history = models.BooleanField()
     sleight_hand = models.BooleanField()
     magic = models.BooleanField()
@@ -32,8 +33,15 @@ class MyHero(models.Model):
     caring = models.BooleanField()
     max_health = models.IntegerField()
     items = models.TextField(default='Ваше Снаряжение')
-
-
-
-
     created_time = models.DateTimeField(default=timezone.now)
+
+class Comment(models.Model):
+    post = models.ForeignKey('blog.MyHero', on_delete=models.CASCADE, related_name='comments')
+    author = models.CharField(max_length=200)
+    text = models.TextField()
+    created_date = models.DateTimeField(default=timezone.now)
+    approved_comment = models.BooleanField(default=False)
+
+    def approve(self):
+        self.approved_comment = True
+        self.save()

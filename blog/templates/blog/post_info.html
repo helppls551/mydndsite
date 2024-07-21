@@ -13,7 +13,8 @@
         <div class="page-header">
             <h1><a href="/">Django Group</a></h1>
             {% if user.is_authenticated %}
-            <a href="{% url 'newhero' %}">Новый герой</a>
+            <p><a class="admin" href="admin/">Админ панель</a></p>
+            <p><a href="{% url 'newhero' %}">Новый герой</a></p>
                 <form action="{% url 'logout' %}" method="post">
                   {% csrf_token %}
                   <button type="submit" class="btn btn-info">Выход</button>
@@ -23,7 +24,6 @@
                 <a href="{% url 'login' %}">Вход</a>
             {% endif %}
         </div>
-
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-2">
@@ -31,20 +31,41 @@
                     {% if post.photo %}
                     <p><img src="{{ post.photo.url }}" width="100" height="250"></p>
                     {% endif %}
-                    <h1><p>{{post.name}}</p></h1>
+                    <h1>{{post.name}}</h1>
                     <p>Сила:{{post.strength}}</p>
                     <p>Телосложение:{{post.endurance}}</p>
                     <p>Интеллект:{{post.intellegence}}</p>
                     <p>Харизма:{{post.charizma}}</p>
                     <p>Ловкость:{{post.dexterity}}</p>
-                    <p>Мудрость:{{post.wisdon}}</p>
+                    <p>Мудрость:{{post.wisdom}}</p>
                     </div>
                 </div>
                 <div class="col-md-2">
-                    <p>Акробатика:</p>
-                    <p>Анализ</p>
+                   <p>Акробатика(Лов): {{acrobatics}}</p>
+                   <p>Анализ(Инт): {{analysis}}</p>
+                   <p>Атлетика(Сил): {{athletics}}</p>
+                   <p>Восприятие(Муд): {{perception}}</p>
+                   <p>Выживание(Муд): {{survival}}</p>
+                   <p>Выступление(Хар): {{survival}}</p>
+                   <p>Запугивание(Хар): {{intimidation}}</p>
+                   <p>История(Инт): {{history}}</p>
+                   <p>Ловкость рук(Лов): {{sleight_hand}}</p>
+                   <p>Магия(Инт): {{magic}}</p>
+                   <p>Медицина(Муд): {{medicine}}</p>
+                   <p>Обман(Хар): {{deception}}</p>
+                   <p>Природа(Инт): {{nature}}</p>
+                   <p>Проницательность(Муд): {{insight}}</p>
+                   <p>Религия(Инт): {{religic}}</p>
+                   <p>Скрытность(Лов): {{stealth}}</p>
+                   <p>Убеждение(Хар): {{conviction}}</p>
+                   <p>Уход за животными(Муд): {{caring}}</p>
                 </div>
             </div>
+            {% if user.is_authenticated %}
+            <p><a href="{% url 'post_edit' pk=post.pk %}">Редактировать пост</a></p>
+            <p><a href="{% url 'post_del' pk=post.pk %}">Удалить пост</a></p>
+            <p><a href="{% url 'add_comment' pk=post.pk %}">Комментировать</a></p>
+            {% endif %}
         </div>
     </body>
 </html>

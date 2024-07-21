@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkbox Data Display</title>
+    <style>
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+        }
+        .checkbox-label input[type="checkbox"] {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="checkbox-label">
+        <input type="checkbox" id="checkbox" onclick="displayCheckboxData()">
+        <label for="checkbox" id="checkboxLabel">Unchecked</label>
+    </div>
+
+    <script>
+        function displayCheckboxData() {
+            var checkbox = document.getElementById('checkbox');
+            var label = document.getElementById('checkboxLabel');
+            if (checkbox.checked) {
+                label.textContent = 'Checked';
+            } else {
+                label.textContent = 'Unchecked';
+            }
+        }
+    </script>
+</body>
+</html>
